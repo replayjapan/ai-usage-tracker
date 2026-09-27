@@ -40,6 +40,29 @@ project. The skill locates its installed launcher; you do not need to copy it in
 each repository. The repository must contain the released plugin files before
 marketplace installation can succeed.
 
+### Update the plugin
+
+1. In Claude Code, run `/plugin marketplace update ai-usage-tracker`.
+   If your interface does not offer it, run
+   `claude plugin marketplace update ai-usage-tracker` in a terminal.
+2. Read the result. With auto-update enabled, the refresh may also update the
+   installed plugin. If it confirms the tracker was updated, skip the next
+   command. Otherwise, run this in a terminal:
+
+   ```sh
+   claude plugin update ai-usage-tracker@ai-usage-tracker
+   ```
+
+3. Back in Claude's chat, run `/reload-plugins`. Check the tracker version in the
+   plugin manager against the release you intended to load; follow any reload
+   error before treating the update as complete.
+
+Auto-update is normally off for third-party marketplaces unless you enable it.
+Find its switch under **Marketplaces → ai-usage-tracker** in the plugin manager.
+See Claude Code's [update guide](https://code.claude.com/docs/en/discover-plugins#keep-plugins-updated).
+These steps apply to a plugin installation. If you installed a standalone Git
+checkout instead, update that checkout; keep its usage data and collector setup.
+
 ### Using it with Fabex
 
 With Fabex 1.10.2 or later, open `/fabex:settings` to see tracking choices and the
@@ -131,6 +154,15 @@ The paths below are placeholders: use your installed folder. This optional plugi
 Data selection: `AI_USAGE_TRACKER_DATA`, then an existing `data/` beside the code (legacy history is preserved), otherwise `$XDG_DATA_HOME/ai-usage-tracker` or `~/.local/share/ai-usage-tracker`. New plugin installations keep data outside the replaceable cache. `--data-dir` explicitly overrides these choices. Nothing migrates or deletes existing data automatically. Use the same explicit data directory across updates if you relocate an old standalone install.
 
 The supplied `track` path and symlinked skill remain supported. Installed skills find the package by resolving their own file path, then moving up from `skills/weekly-tracker` to the package root. No copying into each project is needed.
+
+### Updating an installation
+
+Follow [Update the plugin](#update-the-plugin) for marketplace installs. A refreshed
+marketplace does not prove the installed tracker changed; inspect the update
+result and installed version, then reload the session. Do not enable auto-update,
+reinstall the allowance collector, or move or delete usage data just to update the
+plugin. Standalone checkouts and user-skill links use their existing source folder;
+keep that installation method and its data location when updating.
 
 ### One-time Claude allowance capture
 
