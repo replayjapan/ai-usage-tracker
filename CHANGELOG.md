@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.2 — 2026-09-27
+
+- Explain the independent plugin, bundled skill and Fabex project/milestone tracking setup in the human guide.
+- Use rePlay, LLC as marketplace owner. Collectors and stored usage remain unchanged.
+
 ## 0.1.1 — 2026-09-27
 
 - Separate human introduction, installation and first-use instructions from the AI reference.

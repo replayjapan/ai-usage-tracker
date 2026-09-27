@@ -17,7 +17,7 @@ class PackagingTests(unittest.TestCase):
         self.assertNotIn('repository name and visibility are not yet selected',text)
         plugin=json.loads((u.ROOT/'.claude-plugin/plugin.json').read_text())
         marketplace=json.loads((u.ROOT/'.claude-plugin/marketplace.json').read_text())
-        self.assertEqual(plugin['version'],'0.1.1')
+        self.assertEqual(plugin['version'],'0.1.2')
         self.assertEqual(plugin['license'],'MIT')
         self.assertTrue(plugin['author']['name']); self.assertTrue(marketplace['metadata']['description'])
         self.assertIn('MIT License',(u.ROOT/'LICENSE').read_text())
@@ -65,7 +65,7 @@ class PackagingTests(unittest.TestCase):
     def test_manifests(self):
         manifest=json.loads((u.ROOT/'.claude-plugin/plugin.json').read_text())
         marketplace=json.loads((u.ROOT/'.claude-plugin/marketplace.json').read_text())
-        self.assertEqual(manifest['version'],'0.1.1')
+        self.assertEqual(manifest['version'],'0.1.2')
         self.assertEqual(marketplace['plugins'][0]['name'],manifest['name'])
 
 if __name__=='__main__': unittest.main()

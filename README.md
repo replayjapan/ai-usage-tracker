@@ -28,7 +28,7 @@ cd ai-usage-tracker
 ./track status
 ```
 
-Or install the optional skill through Claude Code:
+Or install the Claude Code plugin, which contains the Weekly Tracker skill:
 
 ```text
 /plugin marketplace add replayjapan/ai-usage-tracker
@@ -39,6 +39,25 @@ Restart Claude Code to load the skill. Ask it to use **Weekly Tracker** for your
 project. The skill locates its installed launcher; you do not need to copy it into
 each repository. The repository must contain the released plugin files before
 marketplace installation can succeed.
+
+### Using it with Fabex
+
+With Fabex 1.10.2 or later, open `/fabex:settings` to see tracking choices and the
+installation status. `/fabex:settings tracking=on` offers **Project** or **Current
+milestone** before saving. Fabex finds the installed tracker automatically;
+you do not need to type its folder path. Without a supported dialog, use:
+
+```text
+/fabex:settings tracking=on scope=project
+/fabex:settings tracking=on scope=milestone
+```
+
+Choose one scope. A milestone override survives new chats and thread rollovers;
+new milestones inherit the project choice. The same menu offers Off and Inherit.
+This plugin works without Fabex: ask the assistant to use Weekly Tracker, or use
+`track` directly. It reads Claude and Codex logs; it is not a native plugin for
+every AI application. Installing it does not turn on Fabex reporting or install
+the optional Claude allowance collector.
 
 ### Get Claude allowance readings (optional, once)
 
@@ -74,6 +93,8 @@ Fabex tracking is off until enabled in its settings; that switch does not instal
 or remove an independently configured global collector.
 
 ### What's new?
+
+- **0.1.2:** explain project and milestone tracking setup with Fabex. [Release notes](CHANGELOG.md)
 
 - **0.1.1:** clearer installation and usage guide, complete plugin metadata and MIT
   licensing. [Release notes](CHANGELOG.md)

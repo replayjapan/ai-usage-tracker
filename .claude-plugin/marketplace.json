@@ -1,6 +1,6 @@
 {
   "name": "ai-usage-tracker",
   "metadata": { "description": "Local Claude and Codex usage tracking, independently or with Fabex." },
-  "owner": { "name": "AI Usage Tracker maintainers" },
+  "owner": { "name": "rePlay, LLC" },
   "plugins": [{ "name": "ai-usage-tracker", "source": "./", "description": "Optional local usage snapshots for Claude and Codex." }]
 }
