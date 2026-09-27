@@ -1,0 +1,5 @@
+{
+  "name": "ai-usage-tracker",
+  "owner": { "name": "AI Usage Tracker maintainers" },
+  "plugins": [{ "name": "ai-usage-tracker", "source": "./", "description": "Optional local usage snapshots for Claude and Codex." }]
+}
