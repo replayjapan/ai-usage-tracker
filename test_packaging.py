@@ -10,6 +10,18 @@ def privacy_issue(name, text):
     return None
 
 class PackagingTests(unittest.TestCase):
+    def test_human_guide_and_plugin_metadata(self):
+        text=(u.ROOT/'README.md').read_text()
+        self.assertLess(text.index('## FOR HUMANS'),text.index('## FOR AI BROTHREN'))
+        self.assertIn('/plugin install ai-usage-tracker@ai-usage-tracker',text)
+        self.assertNotIn('repository name and visibility are not yet selected',text)
+        plugin=json.loads((u.ROOT/'.claude-plugin/plugin.json').read_text())
+        marketplace=json.loads((u.ROOT/'.claude-plugin/marketplace.json').read_text())
+        self.assertEqual(plugin['version'],'0.1.1')
+        self.assertEqual(plugin['license'],'MIT')
+        self.assertTrue(plugin['author']['name']); self.assertTrue(marketplace['metadata']['description'])
+        self.assertIn('MIT License',(u.ROOT/'LICENSE').read_text())
+
     def test_snapshot_retry_key_is_idempotent(self):
         with tempfile.TemporaryDirectory() as folder:
             db=u.connect(folder)
@@ -53,7 +65,7 @@ class PackagingTests(unittest.TestCase):
     def test_manifests(self):
         manifest=json.loads((u.ROOT/'.claude-plugin/plugin.json').read_text())
         marketplace=json.loads((u.ROOT/'.claude-plugin/marketplace.json').read_text())
-        self.assertEqual(manifest['version'],'0.1.0')
+        self.assertEqual(manifest['version'],'0.1.1')
         self.assertEqual(marketplace['plugins'][0]['name'],manifest['name'])
 
 if __name__=='__main__': unittest.main()

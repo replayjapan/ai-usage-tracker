@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.1 — 2026-09-27
+
+- Separate human introduction, installation and first-use instructions from the AI reference.
+- Use the selected GitHub repository for installation instructions.
+- Add plugin author, marketplace description and MIT license (rePlay, LLC).
+- Preserve all collectors, read-only reports, usage data and opt-in behavior.
+
 ## 0.1.0 — 2026-09-27
 
 - Package the existing standalone tracker as an optional Claude plugin/marketplace.
@@ -12,6 +19,6 @@
   launchers and settings are not silently replaced. Explicit refresh is available.
 - Add portability, read-only, retry and public-tree privacy tests.
 
-No GitHub repository has been created or published. Repository visibility, name
-and licensing remain publication decisions. Provider quotas are account-wide;
+At 0.1.0, repository and licensing choices were pending; 0.1.1 supplies them.
+Provider quotas are account-wide;
 local project tokens are not exclusive session accounting or context occupancy.

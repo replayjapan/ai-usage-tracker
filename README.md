@@ -1,5 +1,92 @@
 # AI Usage Tracker
 
+## FOR HUMANS
+
+**See how much AI allowance you have left—and where your project's tokens went.**
+AI Usage Tracker reads Claude Code and Codex's local usage records. It gives you
+a recorded remaining-allowance percentage and reset time where available, plus
+token totals for a project and progress between milestone checkpoints.
+
+It is useful for spotting expensive sessions and planning work around your account
+limits. It does not stop your work, switch models, or buy extra usage. The data
+stays on your computer; there is no hosted dashboard or separate paid service.
+
+**Two important limits:** allowance is account-wide, even when you work on several
+projects. Readings may be missing or stale; this tool shows their age instead of
+pretending they are a live balance. It is not a billing statement.
+
+### Install
+
+You need **Python 3.9+** and local Claude Code and/or Codex usage logs. No Python
+packages are required.
+
+For a standalone command-line installation:
+
+```sh
+git clone https://github.com/replayjapan/ai-usage-tracker.git
+cd ai-usage-tracker
+./track status
+```
+
+Or install the optional skill through Claude Code:
+
+```text
+/plugin marketplace add replayjapan/ai-usage-tracker
+/plugin install ai-usage-tracker@ai-usage-tracker
+```
+
+Restart Claude Code to load the skill. Ask it to use **Weekly Tracker** for your
+project. The skill locates its installed launcher; you do not need to copy it into
+each repository. The repository must contain the released plugin files before
+marketplace installation can succeed.
+
+### Get Claude allowance readings (optional, once)
+
+Token records and Codex allowance can be read from existing logs. Claude allowance
+needs its status-line collector. From the standalone installation folder, preview
+the change, then explicitly apply it if you want the collector:
+
+```sh
+./track setup-claude
+./track setup-claude --apply
+```
+
+This wraps your Claude status line and saves a private settings backup. It preserves
+the existing display. For a plugin installation, ask the skill to locate `track`
+and preview the same setup. Host permission policies still apply. Undo with
+`./track uninstall-claude --apply`; recorded usage is kept.
+
+### Everyday use
+
+Run these from the tracker folder, substituting your project's path:
+
+```sh
+./track snapshot --project /path/to/project --milestone M1 --event start
+./track snapshot --project /path/to/project --milestone M1 --event checkpoint --checkpoint A
+./track report --project /path/to/project --milestone M1
+```
+
+The skill can record start, checkpoints, progress and end for you. You can also ask
+for a read-only report when you do not want new data imported.
+
+Optional with [Fabex](https://github.com/replayjapan/fabex), useful on its own.
+Fabex tracking is off until enabled in its settings; that switch does not install
+or remove an independently configured global collector.
+
+### What's new?
+
+- **0.1.1:** clearer installation and usage guide, complete plugin metadata and MIT
+  licensing. [Release notes](CHANGELOG.md)
+- **0.1.0:** local token accounting, allowance snapshots, milestone checkpoints and
+  genuinely read-only reports. [Release notes](CHANGELOG.md)
+
+By **rePlay, LLC**, under the [MIT License](LICENSE). Never publish your usage
+database, private logs, credentials or settings backups.
+
+---
+
+## FOR AI BROTHREN
+
 A standalone, local command-line tool for Claude Code and Codex usage across projects. Python 3.9+ and its standard library only. No Fabex dependency, plugin edits, network requests, model calls, paid service or background polling.
 
 ## What is measured
@@ -18,7 +105,7 @@ Keep this entire new folder at:
 /absolute/path/to/ai-usage-tracker
 ```
 
-The paths below are placeholders: use your installed folder. This optional plugin works alone and is recommended, not required, with Fabex. It can be installed through a local Claude marketplace or a future GitHub marketplace; repository name and visibility are not yet selected. No publication is implied.
+The paths below are placeholders: use your installed folder. This optional plugin works alone and is recommended, not required, with Fabex. Its GitHub marketplace is `replayjapan/ai-usage-tracker`; local marketplace installation is also supported. Preparing local files does not itself publish a release.
 
 Data selection: `AI_USAGE_TRACKER_DATA`, then an existing `data/` beside the code (legacy history is preserved), otherwise `$XDG_DATA_HOME/ai-usage-tracker` or `~/.local/share/ai-usage-tracker`. New plugin installations keep data outside the replaceable cache. `--data-dir` explicitly overrides these choices. Nothing migrates or deletes existing data automatically. Use the same explicit data directory across updates if you relocate an old standalone install.
 
@@ -99,4 +186,4 @@ Fixtures cover streaming/fork duplicates, Codex cache accounting and reset basel
 - Claude usage reporting: https://code.claude.com/docs/en/monitoring-usage
 - Codex usage/allowance interfaces: https://learn.chatgpt.com/docs/app-server
 
-This version reads installed-client log schemas rather than depending on live App Server access. It works independently of Fabex; no plugin upgrade is required. Before publication run the privacy test against staged/tracked files, choose repository visibility and licensing, and exclude all usage databases, private launchers, settings backups and credentials. No repository is created by this package.
+This version reads installed-client log schemas rather than depending on live App Server access. It works independently of Fabex; no plugin upgrade is required. Before publication run the privacy test against staged/tracked files, verify the chosen repository and license, and exclude all usage databases, private launchers, settings backups and credentials. No repository is created by this package.

@@ -1,5 +1,7 @@
 {
   "name": "ai-usage-tracker",
-  "version": "0.1.0",
-  "description": "Optional local Claude and Codex usage snapshots, with read-only reports."
+  "version": "0.1.1",
+  "description": "Optional local Claude and Codex usage snapshots, with read-only reports.",
+  "author": { "name": "rePlay, LLC" },
+  "license": "MIT"
 }
