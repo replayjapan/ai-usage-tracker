@@ -135,6 +135,7 @@ These plugins work together, and each one also works on its own.
 | [Fabex](https://github.com/replayjapan/fabex) | Claude and Codex work as partners: each considers your request independently, then they agree before acting. |
 | [Modes](https://github.com/replayjapan/modes) | Choose what your AI may do right now: build, research and plan, or just answer a question. |
 | [Design Loop](https://github.com/replayjapan/design-loop) | Research before UI choices, then review the real page at desktop and phone widths. |
+| [Publish Guard](https://github.com/replayjapan/publish-guard) | Reviews supported Git and GitHub actions for private information before they are published. |
 
 ---
 
