@@ -126,6 +126,16 @@ or remove an independently configured global collector.
 By **rePlay, LLC**, under the [MIT License](LICENSE). Never publish your usage
 database, private logs, credentials or settings backups.
 
+### Related plugins
+
+These plugins work together, and each one also works on its own.
+
+| Plugin | What it does |
+| --- | --- |
+| [Fabex](https://github.com/replayjapan/fabex) | Claude and Codex work as partners: each considers your request independently, then they agree before acting. |
+| [Modes](https://github.com/replayjapan/modes) | Choose what your AI may do right now: build, research and plan, or just answer a question. |
+| [Design Loop](https://github.com/replayjapan/design-loop) | Research before UI choices, then review the real page at desktop and phone widths. |
+
 ---
 
 ## FOR AI BROTHREN
