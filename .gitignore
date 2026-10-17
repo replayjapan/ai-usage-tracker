@@ -1,0 +1,13 @@
+data/
+__pycache__/
+*.pyc
+*.sqlite3*
+*.db*
+*settings-before*
+*delegate*.json
+.env*
+statusline-launcher.py
+/Planning/
+/.research/
+/docs/internal/
+*.handoff.md
